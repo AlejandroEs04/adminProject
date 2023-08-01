@@ -1,20 +1,86 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+// In App.js in a new project
 
-export default function App() {
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Index from './pages';
+import Settings from './pages/Settings';
+import AddHomework from './pages/AddHomework';
+import AddCategory from './pages/AddCategory';
+
+const Stack = createNativeStackNavigator();
+
+function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen 
+          name="Home" 
+          component={Index} 
+          options={{ 
+            title: 'Home' ,
+            headerStyle: {
+              backgroundColor: '#3a3737',
+            },
+            headerTitleAlign: 'center',
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontSize: 22,
+              fontWeight: 'bold',
+            },
+          }}
+        />
+        <Stack.Screen 
+          name="Settings" 
+          component={Settings}  
+          options={{ 
+            title: 'Settings',
+            headerStyle: {
+              backgroundColor: '#3a3737',
+            },
+            headerTitleAlign: 'center',
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontSize: 20,
+              fontWeight: 'bold',
+            },
+          }} 
+        />
+        <Stack.Screen 
+          name='AddHomework'
+          component={AddHomework}
+          options={{ 
+            title: 'New Homework',
+            headerStyle: {
+              backgroundColor: '#3a3737',
+            },
+            headerTitleAlign: 'center',
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontSize: 20,
+              fontWeight: 'bold',
+            },
+          }}
+        />
+        <Stack.Screen 
+          name='AddCategory'
+          component={AddCategory}
+          options={{ 
+            title: 'New Category', 
+            headerStyle: {
+              backgroundColor: '#3a3737',
+            },
+            headerTitleAlign: 'center',
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontSize: 20,
+              fontWeight: 'bold',
+            },
+          }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
