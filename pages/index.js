@@ -1,7 +1,6 @@
-import React from 'react'
-import { View, Text, StyleSheet, ScrollView, Appearance } from 'react-native'
+import React, {useState} from 'react'
+import { View, Text, StyleSheet, ScrollView, Appearance, Settings } from 'react-native'
 import { CustomBoton, ImageBoton } from '../components/Buttons'
-import { useState } from 'react'
 
 function Index({navigation}) {
 
