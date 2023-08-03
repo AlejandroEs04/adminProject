@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native'
 import React from 'react'
 
-export function CustomBoton({color, text, onPress, textColor}) {
+export function CustomBoton({color, text, onPress, textColor, fontSize}) {
     return (
         <TouchableOpacity
             style = {{
@@ -38,8 +38,8 @@ export function ImageBoton({url, onPress, text}) {
         >
             <Image 
                 style={{
-                    width: 25,
-                    height: 25,
+                    width: 15,
+                    height: 15,
                 }}
                 source={{uri: url}}
             />
@@ -51,7 +51,7 @@ export function ImageBoton({url, onPress, text}) {
 const styles = StyleSheet.create({
     button: {
         alignSelf: 'center',
-        paddingHorizontal: 18,
+        paddingHorizontal: 10,
         paddingVertical: 8,
         borderRadius: 10,
     },

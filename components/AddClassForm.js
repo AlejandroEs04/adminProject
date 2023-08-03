@@ -22,10 +22,10 @@ const styles = StyleSheet.create({
     
 })
 
-export default function AddHomeworkForm({navigation, homework, homeworks, setHomeworks, colorPreferences}) {
-    const [homeworkName, setHomeworkName] = useState('');
-    const [homeworkDate, setHomeworkDate] = useState('');
-    const [homeworkDescription, setHomeworkDescription] = useState('');
+export default function AddHomeworkForm({navigation, clase, classes, setClasses}) {
+    const [ClassName, setClassName] = useState('')
+    const [Classroom, setClassroom] = useState('')
+    const [ClassDate, setClassDate] = useState('')
     
     // Generate a new and unique ID
     const generarId = () => {
@@ -37,68 +37,66 @@ export default function AddHomeworkForm({navigation, homework, homeworks, setHom
     const onPress = () => {
 
         // Check if all inputs is full
-        if([homeworkName, homeworkDescription, homeworkDate].includes('')) {
+        if([ClassName, Classroom, ClassDate].includes('')) {
             console.log('ERROR')
             return;
         }
 
         // Create a homework object for adding to array
-        const homeworkObject = {
-            homeworkName,
-            homeworkDescription,
-            homeworkDate
+        const classObject = {
+            ClassName,
+            Classroom,
+            ClassDate
         }
 
         // Check if the object exist
-        if(homework.id) {
+        if(clase.id) {
             console.log('Ya existe')
         } else {
             // New Homeworks
-            homeworkObject.id = generarId();
-            setHomeworks([...homeworks, homeworkObject])
+            classObject.id = generarId();
+            setClasses([...classes, classObject])
         }
 
-        setHomeworkName('')
-        setHomeworkDescription('')
-        setHomeworkDate('')
+        setClassName('')
+        setClassDate('')
+        setClassroom('')
         navigation.navigate('Home')
     }
 
     return (
         <View>
             <View style={styles.inputContainer}>
-               <Text style={styles.texto}>Homework name</Text>
+               <Text style={styles.texto}>Class name</Text>
                 <TextInput
                     style={styles.input}
-                    onChangeText={setHomeworkName}
-                    value={homeworkName}
+                    onChangeText={setClassName}
+                    value={ClassName}
                 /> 
             </View>
 
             <View style={styles.inputContainer}>
-               <Text style={styles.texto}>Due Date</Text>
+               <Text style={styles.texto}>Class Date</Text>
                <TextInput
-                    inputMode='numeric'
-                    maxLength={10}
                     style={styles.input}
-                    onChangeText={setHomeworkDate}
-                    value={homeworkDate}
-                /> 
+                    onChangeText={setClassDate}
+                    value={ClassDate}
+                />  
             </View>
 
             <View style={styles.inputContainer}>
-               <Text style={styles.texto}>Description</Text>
+               <Text style={styles.texto}>Class room</Text>
                 <TextInput
-                    inputMode='text'
+                    inputMode='numeric'
                     style={styles.input}
-                    onChangeText={setHomeworkDescription}
-                    value={homeworkDescription}
+                    onChangeText={setClassroom}
+                    value={Classroom}
                 /> 
             </View>
 
             <CustomBoton 
                 color='#1491ff'
-                text='Save Homework'
+                text='Save Class'
                 textColor='#f1f1f1'
                 onPress={onPress}
             />
